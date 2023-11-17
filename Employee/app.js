@@ -1,9 +1,11 @@
 import Express from "express";
 import dbconnection from "./connection/dbConnection.js";
 import {} from "dotenv/config.js";
+import EmployeeRouter from "./router/employeeRouter.js";
 
 const app = Express();
 app.use(Express.json());
+app.use("/api/v1/", EmployeeRouter);
 
 const connect = async () => {
   try {
