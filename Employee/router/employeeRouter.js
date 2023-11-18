@@ -4,10 +4,11 @@ import {
   getEmployee,
   updateEmployee,
   deleteEmployee,
+  addEmployee
 } from "../controller/employeeController.js";
 const Router = Express.Router();
 
-Router.route("/").get(getallEmployee);
+Router.route("/").get(getallEmployee).post(addEmployee)
 Router.route("/id")
   .get(getEmployee)
   .patch(updateEmployee)
