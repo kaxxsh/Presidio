@@ -17,7 +17,6 @@ const getallEmployee = async (req, res, next) => {
 // route: http://localhost:3000/api/v1/
 const addEmployee = async (req, res, next) => {
   try {
-    console.log(req.body.username);
     if (
       !req.body.username ||
       !req.body.age ||
@@ -71,10 +70,57 @@ const deleteEmployee = async (req, res, next) => {
   }
 };
 
+// Get Average Salary of a Department
+// route: http://localhost:3000/api/v1/average-salary/:department
+const getAverageSalaryByDepartment = async (req, res, next) => {
+  try {
+    const department = req.params.department;
+    const data = await Employee.aggregate([
+      { $match: { department: department } },
+      {
+        $group: {
+          _id: null,
+          averageSalary: { $avg: "$salery" },
+        },
+      },
+    ]);
+
+    console.log(data);
+    if (data.length === 0)
+      throw new badRequest("No data found for the department");
+    res.status(200).json({ averageSalary: data[0].averageSalary });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Calculate the Average Salary of an Employee in the Company
+// route: http://localhost:3000/api/v1/average-salary
+const getAverageSalaryInCompany = async (req, res, next) => {
+  try {
+    const data = await Employee.aggregate([
+      {
+        $group: {
+          _id: null,
+          averageSalary: { $avg: "$salery" },
+        },
+      },
+    ]);
+
+    if (data.length === 0)
+      throw new badRequest("No data found for calculating average salary");
+    res.status(200).json({ averageSalary: data[0].averageSalary });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export {
   getallEmployee,
   getEmployee,
   updateEmployee,
   deleteEmployee,
   addEmployee,
+  getAverageSalaryByDepartment,
+  getAverageSalaryInCompany,
 };
