@@ -9,7 +9,7 @@ import {
 const Router = Express.Router();
 
 Router.route("/").get(getallEmployee).post(addEmployee)
-Router.route("/id")
+Router.route("/:id")
   .get(getEmployee)
   .patch(updateEmployee)
   .delete(deleteEmployee);

@@ -5,7 +5,7 @@ import EmployeeRouter from "./router/employeeRouter.js";
 
 const app = Express();
 app.use(Express.json());
-app.use("/api/v1/", EmployeeRouter);
+app.use("/api/v1", EmployeeRouter);
 
 const connect = async () => {
   try {

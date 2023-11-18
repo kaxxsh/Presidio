@@ -1,32 +1,31 @@
 import mongoose from "mongoose";
 
-const Employee = mongoose.Schema({
-  Name: {
-    type: String,
-    require: true,
-    unique: true,
+const Employee = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      require: true,
+      unique: true,
+    },
+    age: {
+      type: String,
+      require: true,
+    },
+    dob: {
+      type: String,
+      require: true,
+    },
+    salery: {
+      type: String,
+      require: true,
+    },
+    department: {
+      type: String,
+      require: true,
+    },
   },
-  age: {
-    type: String,
-    require: true,
-    unique: true,
-  },
-  dob: {
-    type: String,
-    require: true,
-    unique: true,
-  },
-  salery: {
-    type: String,
-    require: true,
-    unique: true,
-  },
-  department: {
-    type: String,
-    require: true,
-    unique: true,
-  },
-});
+  { timestamps: true }
+);
 
 const EmployeeSchema = mongoose.model("Employee", Employee);
 
