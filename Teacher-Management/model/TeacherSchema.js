@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+
+// creating an schema for the Teachers
 const Schema = new mongoose.Schema(
   {
     teachername: {

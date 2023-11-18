@@ -4,11 +4,13 @@ import {} from "dotenv/config.js";
 import Teacher from "./router/teacherRouter.js";
 import errorhandle from "./middleware/errror-handle.js";
 
+// Create an instance of the Express application
 const app = Express();
 app.use(Express.json());
 app.use("/api/v1", Teacher);
 app.use(errorhandle);
 
+// Function to connect to the database and start the server
 const connect = async () => {
   try {
     dbconnection(process.env.MONGO_URL);

@@ -7,7 +7,7 @@ import Employee from "../model/employeeSchema.js";
 const getallEmployee = async (req, res, next) => {
   try {
     const data = await Employee.find(req.query);
-    if (!data) throw new badRequest("no data found");
+    if (data.length === 0) throw new badRequest("no data found");
     res.status(200).json({ data });
   } catch (error) {
     next(error);
@@ -28,7 +28,7 @@ const addEmployee = async (req, res, next) => {
       throw new badRequest("user details missing");
 
     const data = await Employee.findOne({ teachername: req.body.teachername });
-    if (!data.length === 0) throw new badRequest("user already available");
+    if (data) throw new badRequest("user already available");
     await Employee.create(req.body);
     res.status(200).json({ message: "Employee created Success" });
   } catch (error) {
@@ -41,7 +41,7 @@ const addEmployee = async (req, res, next) => {
 const getEmployee = async (req, res, next) => {
   try {
     const data = await Employee.findById(req.params.id);
-    if (data.length === 0) throw new badRequest("no data found");
+    if (!data) throw new badRequest("no data found");
     res.status(200).json({ data });
   } catch (error) {
     next(error);
