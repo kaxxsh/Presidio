@@ -12,7 +12,7 @@ app.use(CustomError);
 const connect = async () => {
   try {
     dbconnection(process.env.MONGO_URL);
-    app.listen(process.env.PORT, () => console.log("listerning at 3000"));
+    app.listen(process.env.PORT, () => console.log(`listerning at ${process.env.PORT}`));
   } catch (error) {
     console.log(error);
   }

@@ -2,9 +2,11 @@ import badRequest from "../error/badRequest.js";
 import Employee from "../model/employeeSchema.js";
 
 // get all the users in company
-// route: http://localhost:3000/api/v1/
+// route: http://localhost:3000/api/v1
+// make the query for <,>,<=,>= as example route: http://localhost:3000/api/v1?salery[$gt]=1000
 const getallEmployee = async (req, res, next) => {
   try {
+    console.log(req.query);
     const data = await Employee.find(req.query);
     if (data.length === 0) throw new badRequest("no data found");
     res.status(200).json({ data });
@@ -14,7 +16,7 @@ const getallEmployee = async (req, res, next) => {
 };
 
 // Add user to the company
-// route: http://localhost:3000/api/v1/
+// route: http://localhost:3000/api/v1
 const addEmployee = async (req, res, next) => {
   try {
     if (
