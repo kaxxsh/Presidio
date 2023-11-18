@@ -8,8 +8,9 @@ import Teacher from "../model/TeacherSchema.js";
 const allTeacher = async (req, res, next) => {
   try {
     const data = await Teacher.find(req.query);
-    if (data.length === 0) throw new badRequest("no data found");
-    res.status(200).json({ message: "data found" }, data);
+    if (data.length === 0)
+      return res.status(200).json({ message: "no data found" });
+    res.status(200).json({ data });
   } catch (error) {
     next(error);
   }
@@ -34,7 +35,7 @@ const addTeacher = async (req, res, next) => {
 const getTeacher = async (req, res, next) => {
   try {
     const data = await Teacher.findById(req.params.id);
-    if (!data) throw new badRequest("Teacher not found");
+    if (!data) return res.status(200).json({ message: "no data found" });
     res.status(200).json({ data });
   } catch (error) {
     next(error);

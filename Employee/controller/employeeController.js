@@ -7,7 +7,7 @@ import Employee from "../model/employeeSchema.js";
 const getallEmployee = async (req, res, next) => {
   try {
     const data = await Employee.find(req.query);
-    if (data.length === 0) throw new badRequest("no data found");
+    if (data.length === 0) return res.status(200).json({ message: "no data found" });
     res.status(200).json({ data });
   } catch (error) {
     next(error);
@@ -41,7 +41,7 @@ const addEmployee = async (req, res, next) => {
 const getEmployee = async (req, res, next) => {
   try {
     const data = await Employee.findById(req.params.id);
-    if (!data) throw new badRequest("no data found");
+    if (!data) return res.status(200).json({ message: "no data found" });
     res.status(200).json({ data });
   } catch (error) {
     next(error);

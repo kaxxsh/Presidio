@@ -2,11 +2,13 @@ import Express from "express";
 import dbconnection from "./connection/dbConnection.js";
 import {} from "dotenv/config.js";
 import Movie from "./router/movieRouter.js";
+import errorhandle from "./middleware/errror-handle.js";
 
 // Create an instance of the Express application
 const app = Express();
 app.use(Express.json());
 app.use("/api/v1", Movie);
+app.use(errorhandle);
 
 // Function to connect to the database and start the server
 const connect = async () => {

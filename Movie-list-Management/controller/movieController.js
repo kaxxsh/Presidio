@@ -3,11 +3,13 @@ import Movie from "../model/movieSchema.js";
 
 // Get all Movies or filter based on query parameters
 // route: http://localhost:3000/api/v1
+// you can filter the according to the criteria route: http://localhost:3000/api/v1?name=name
 const allMovie = async (req, res, next) => {
   try {
     const data = await Movie.find(req.query);
-    if (data.length === 0) throw new badRequest("no data found");
-    res.status(200).json({ message: "data found" }, data);
+    if (data.length === 0)
+      return res.status(200).json({ message: "no data found" });
+    res.status(200).json({ data });
   } catch (error) {
     next(error);
   }
@@ -32,7 +34,7 @@ const addMovie = async (req, res, next) => {
 const getMovie = async (req, res, next) => {
   try {
     const data = await Movie.findById(req.params.id);
-    if (!data) throw new badRequest("Movie not found");
+    if (!data) return res.status(200).json({ message: "no data found" });
     res.status(200).json({ data });
   } catch (error) {
     next(error);

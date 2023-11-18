@@ -9,15 +9,15 @@ const Schema = new mongoose.Schema(
       unique: true,
     },
     director: {
-      type: Number,
-      require: true,
-    },
-    year: {
       type: String,
       require: true,
     },
-    language: {
+    year: {
       type: Number,
+      require: true,
+    },
+    language: {
+      type: String,
       require: true,
     },
     rating: {
