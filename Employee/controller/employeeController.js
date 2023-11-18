@@ -6,9 +6,8 @@ import Employee from "../model/employeeSchema.js";
 // make the query for <,>,<=,>= as example route: http://localhost:3000/api/v1?salery[$gt]=1000
 const getallEmployee = async (req, res, next) => {
   try {
-    console.log(req.query);
     const data = await Employee.find(req.query);
-    if (data.length === 0) throw new badRequest("no data found");
+    if (!data) throw new badRequest("no data found");
     res.status(200).json({ data });
   } catch (error) {
     next(error);
@@ -27,8 +26,11 @@ const addEmployee = async (req, res, next) => {
       !req.body.department
     )
       throw new badRequest("user details missing");
-    const data = await Employee.create(req.body);
-    res.status(200).json({ data });
+
+    const data = await Employee.findOne({ teachername: req.body.teachername });
+    if (!data.length === 0) throw new badRequest("user already available");
+    await Employee.create(req.body);
+    res.status(200).json({ message: "Employee created Success" });
   } catch (error) {
     next(error);
   }
@@ -54,7 +56,7 @@ const updateEmployee = async (req, res, next) => {
       new: true,
     });
     if (!data) throw new badRequest("Not updated");
-    res.status(200).json({ data });
+    res.status(200).json({ message: "success" });
   } catch (error) {
     next(error);
   }

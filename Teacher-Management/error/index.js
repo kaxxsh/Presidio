@@ -1,3 +1,3 @@
-import badRequest from "./badRequest";
+import badRequest from "./badRequest.js";
 
 export { badRequest };

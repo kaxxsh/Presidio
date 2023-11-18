@@ -1,6 +1,6 @@
 import Express from "express";
 import {
-  addTeacher,
+  allTeacher,
   addTeacher,
   getTeacher,
   updateTeacher,
