@@ -5,7 +5,7 @@ import {
   getMovie,
   updateMovie,
   deleteMovie,
-} from "../controller/MovieController.js";
+} from "../controller/movieController.js";
 
 const Router = Express.Router();
 
