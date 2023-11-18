@@ -1,22 +1,26 @@
 import mongoose from "mongoose";
 
-// creating an schema for the Teachers
+// creating an schema for the Movie
 const Schema = new mongoose.Schema(
   {
-    teachername: {
+    moviename: {
       type: String,
       require: true,
       unique: true,
     },
-    age: {
+    director: {
       type: Number,
       require: true,
     },
-    dob: {
+    year: {
       type: String,
       require: true,
     },
-    numberofclass: {
+    language: {
+      type: Number,
+      require: true,
+    },
+    rating: {
       type: Number,
       require: true,
     },
@@ -26,6 +30,6 @@ const Schema = new mongoose.Schema(
   }
 );
 
-const teacherSchema = mongoose.model("Teacher", Schema);
+const MovieSchema = mongoose.model("Movie", Schema);
 
-export default teacherSchema;
+export default MovieSchema;
