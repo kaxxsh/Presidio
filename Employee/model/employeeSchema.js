@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 
 const Employee = mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       require: true,
       unique: true,
     },
     age: {
-      type: String,
+      type: Number,
       require: true,
     },
     dob: {
@@ -16,7 +16,7 @@ const Employee = mongoose.Schema(
       require: true,
     },
     salery: {
-      type: String,
+      type: Number,
       require: true,
     },
     department: {
