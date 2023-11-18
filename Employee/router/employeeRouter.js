@@ -8,6 +8,9 @@ import {
 } from "../controller/employeeController.js";
 const Router = Express.Router();
 
+
+// creating router for the employee module 
+
 Router.route("/").get(getallEmployee).post(addEmployee)
 Router.route("/:id")
   .get(getEmployee)

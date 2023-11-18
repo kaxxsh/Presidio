@@ -1,6 +1,8 @@
 import badRequest from "../error/badRequest.js";
 import Employee from "../model/employeeSchema.js";
 
+// get all the users in company
+// route: http://localhost:3000/api/v1/
 const getallEmployee = async (req, res, next) => {
   try {
     const data = await Employee.find(req.query);
@@ -11,6 +13,8 @@ const getallEmployee = async (req, res, next) => {
   }
 };
 
+// Add user to the company
+// route: http://localhost:3000/api/v1/
 const addEmployee = async (req, res, next) => {
   try {
     console.log(req.body.username);
@@ -29,6 +33,8 @@ const addEmployee = async (req, res, next) => {
   }
 };
 
+// get the single user
+// route: http://localhost:3000/api/v1/:id
 const getEmployee = async (req, res, next) => {
   try {
     const data = await Employee.findById(req.params.id);
@@ -38,6 +44,9 @@ const getEmployee = async (req, res, next) => {
     next(error);
   }
 };
+
+// update user details
+// route: http://localhost:3000/api/v1/:id
 const updateEmployee = async (req, res, next) => {
   try {
     const data = await Employee.findByIdAndUpdate(req.params.id, req.body, {
@@ -49,6 +58,9 @@ const updateEmployee = async (req, res, next) => {
     next(error);
   }
 };
+
+// delete the user for the db
+// route: http://localhost:3000/api/v1/:id
 const deleteEmployee = async (req, res, next) => {
   try {
     const data = await Employee.findByIdAndDelete(req.params.id);

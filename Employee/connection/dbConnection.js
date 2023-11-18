@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// making connection to Database
 const dbconnection = (URL) => {
   try {
     mongoose.connect(URL);
