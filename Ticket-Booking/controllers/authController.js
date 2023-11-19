@@ -4,12 +4,11 @@ import { comparePassword, jwtGenrator } from "../utils/index.js";
 
 const authSignup = async (req, res, next) => {
   try {
-    for (let i in req.body) {
-      if (!req.body[i].email || !req.body[i].password) {
-        throw new badRequest("Email and Password is required");
-      }
-      await authSchema.create(req.body[i]);
+    if (!req.body.email || !req.body.password) {
+      throw new badRequest("Email and Password is required");
     }
+    await authSchema.create(req.body);
+
     res.status(200).json({ message: "User Created" });
   } catch (error) {
     next(error);
