@@ -1,52 +1,11 @@
-import mongoose from "mongoose";
+import Express from "express";
 
-// creating an schema for the Teachers
-const Schema = new mongoose.Schema(
-  {
-    studentname: {
-      type: String,
-      require: true,
-      unique: true,
-    },
-    age: {
-      type: Number,
-      require: true,
-    },
-    dob: {
-      type: String,
-      require: true,
-    },
-    class: {
-      type: Number,
-      require: true,
-    },
-    subjects: [
-      {
-        subname: {
-          type: String,
-          require: true,
-          unique: true,
-        },
-        mark: {
-          type: Number,
-          require: true,
-        },
-      },
-    ],
-    percentage: {
-      type: Number,
-      require: true,
-    },
-    grade: {
-      type: String,
-      require: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+const Router = Express.Router();
 
-const StudentSchema = mongoose.model("Students", Schema);
+// Route: GET /, POST /
+Router.route("/").get(allStudent).post(addStudent);
 
-export default StudentSchema;
+// Route: GET /:id, PATCH /:id, DELETE /:id
+Router.route("/:id").get(getStudent).patch(updateStudent).delete(deleteStudent);
+
+export default Router;
