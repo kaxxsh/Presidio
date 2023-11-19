@@ -6,24 +6,24 @@ const Employee = mongoose.Schema(
   {
     username: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     age: {
       type: Number,
-      require: true,
+      required: true,
     },
     dob: {
       type: String,
-      require: true,
+      required: true,
     },
     salery: {
       type: Number,
-      require: true,
+      required: true,
     },
     department: {
       type: String,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }

@@ -5,41 +5,41 @@ const Schema = new mongoose.Schema(
   {
     studentname: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     age: {
       type: Number,
-      require: true,
+      required: true,
     },
     dob: {
       type: String,
-      require: true,
+      required: true,
     },
     class: {
       type: Number,
-      require: true,
+      required: true,
     },
     subjects: [
       {
         subname: {
           type: String,
-          require: true,
+          required: true,
           unique: true,
         },
         mark: {
           type: Number,
-          require: true,
+          required: true,
         },
       },
     ],
     percentage: {
       type: Number,
-      require: true,
+      required: true,
     },
     grade: {
       type: String,
-      require: true,
+      required: true,
     },
   },
   {

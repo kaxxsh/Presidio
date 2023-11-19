@@ -5,20 +5,20 @@ const Schema = new mongoose.Schema(
   {
     teachername: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     age: {
       type: Number,
-      require: true,
+      required: true,
     },
     dob: {
       type: String,
-      require: true,
+      required: true,
     },
     numberofclass: {
       type: Number,
-      require: true,
+      required: true,
     },
   },
   {

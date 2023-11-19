@@ -19,7 +19,7 @@ const allMovie = async (req, res, next) => {
 // route: http://localhost:3000/api/v1
 const addMovie = async (req, res, next) => {
   try {
-    const data = await Movie.findOne({ Moviename: req.body.Moviename });
+    const data = await Movie.findOne({ moviename: req.body.moviename });
     console.log(data);
     if (data) throw new badRequest("user already available");
     await Movie.create(req.body);

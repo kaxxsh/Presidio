@@ -5,24 +5,24 @@ const Schema = new mongoose.Schema(
   {
     moviename: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     director: {
       type: String,
-      require: true,
+      required: true,
     },
     year: {
       type: Number,
-      require: true,
+      required: true,
     },
     language: {
       type: String,
-      require: true,
+      required: true,
     },
     rating: {
       type: Number,
-      require: true,
+      required: true,
     },
   },
   {
